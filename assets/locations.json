@@ -1,0 +1,26 @@
+{
+    "offices": [
+      {
+        "address": "1600 Amphitheatre Parkway",
+        "id": "1",
+        "image": "image_url",
+        "lat": 37.422,
+        "lng": -122.084,
+        "name": "Googleplex",
+        "phone": "650-253-0000",
+        "region": "United States"
+      }
+    ],
+    "regions": [
+      {
+        "coords": {
+          "lat": 37.7749,
+          "lng": -122.4194
+        },
+        "id": "us-west",
+        "name": "Western United States",
+        "zoom": 5.0
+      }
+    ]
+  }
+  

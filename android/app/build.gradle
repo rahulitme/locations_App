@@ -1,0 +1,121 @@
+// plugins {
+//     id 'com.android.application'
+//     id 'kotlin-android'
+//     id 'dev.flutter.flutter-gradle-plugin'
+//     id 'com.google.gms.google-services'
+// }
+
+// android {
+//     namespace 'com.example.myapp'
+//     compileSdkVersion 34
+//     ndkVersion flutter.ndkVersion
+
+//     compileOptions {
+//         sourceCompatibility JavaVersion.VERSION_1_8
+//         targetCompatibility JavaVersion.VERSION_1_8
+//     }
+
+//     kotlinOptions {
+//         jvmTarget = '1.8'
+//     }
+
+//     sourceSets {
+//         main.java.srcDirs += 'src/main/kotlin'
+//     }
+
+//     defaultConfig {
+//         applicationId 'com.example.myapp'
+//         minSdkVersion 23
+//         targetSdkVersion 34
+//         versionCode 1
+//         versionName '1.0'
+//     }
+
+//     buildTypes {
+//         release {
+//             signingConfig signingConfigs.debug
+//         }
+//     }
+// }
+
+// flutter {
+//     source '../..'
+// }
+
+// dependencies {
+//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//     implementation platform('com.google.firebase:firebase-bom:32.2.0')
+//     implementation 'com.google.android.gms:play-services-maps:18.0.2' 
+//     implementation 'com.google.android.libraries.places:places:2.4.0'
+//  // Use the latest version
+    
+
+
+// }
+
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dev.flutter.flutter-gradle-plugin'
+    id 'com.google.gms.google-services'
+    id"com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
+    
+}
+
+android {
+    compileSdkVersion 34
+    namespace 'com.example.myapp' // Moved up
+
+    defaultConfig {
+        applicationId "com.example.myapp"
+        minSdkVersion 23
+        targetSdkVersion 34
+        versionCode 1
+        versionName '1.0'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            shrinkResources false
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+      secrets {
+        // Define the properties file containing the API key
+        propertiesFileName = "secrets.properties"
+
+        // Optional: Default properties file if "secrets.properties" doesn't exist
+        defaultPropertiesFileName = "local.defaults.properties"
+
+        // Optional: Ignore specific keys
+        ignoreList.add("keyToIgnore") // Ignore specific keys
+        ignoreList.add("sdk.*")       // Ignore keys with regex pattern "sdk.*"
+    }
+}
+
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation 'com.android.volley:volley:1.2.1'  // Updated version of Volley
+    implementation 'com.google.android.libraries.places:places:2.4.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.android.support:support-v4:28.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
